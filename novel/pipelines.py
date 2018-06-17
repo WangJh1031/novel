@@ -6,6 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import pymysql
+import env
 import requests as rsq
 
 class NovelPipeline(object):
@@ -15,10 +16,10 @@ class NovelPipeline(object):
         tid = item['tid']
         name = 'novel'
         connection = pymysql.connect(
-            host='bwg.kidding.men',  # 连接的是本地数据库
+            host=env.db_host,  # 连接的是本地数据库
             port=3306,
-            user='winfath',  # 自己的mysql用户名
-            passwd='winfath0215',  # 自己的密码
+            user=env.db_user,  # 自己的mysql用户名
+            passwd=env.db_passwd,  # 自己的密码
             db='books',  # 数据库的名字
             charset='utf8mb4',  # 默认的编码方式：
             cursorclass=pymysql.cursors.DictCursor
