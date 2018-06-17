@@ -28,5 +28,5 @@ class NovelSpider(scrapy.Spider):
             content = content.replace(rep,"")
         item['title'] = title
         item['content'] = content
-        item['tid'] = c2n.Cn2An(c2n.get_tit_num(title))
+        item['tid'] = c2n.Cn2An(c2n.get_tit_num(title[title.find("第")+1:title.find("章")]))
         return item
